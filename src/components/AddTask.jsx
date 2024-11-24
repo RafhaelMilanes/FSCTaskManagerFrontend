@@ -7,7 +7,7 @@ import { FaPlus } from "react-icons/fa";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
-const AddTask = () => {
+const AddTask = ({ fetchTasks }) => {
     const [task, setTask] = useState("");
 
     const alert = useAlert();
@@ -29,7 +29,12 @@ const AddTask = () => {
                     isCompleted: false,
                 }
             );
-        } catch (error) {}
+
+            await fetchTasks();
+            setTask("");
+        } catch (error) {
+            alert.error("Algo deu errado");
+        }
     };
 
     return (
