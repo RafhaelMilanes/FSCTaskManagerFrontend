@@ -17,6 +17,22 @@ const TaskItem = ({ tarefa, fetchTasks }) => {
             alert.error("Algo deu errado.");
         }
     };
+
+    const handleTaskCompletionChange = async (e) => {
+        try {
+            await axios.patch(
+                `https://fsctaskmanagerbackend.onrender.com/tasks/${tarefa._id}`,
+                {
+                    isCompleted: e.target.checked,
+                }
+            );
+            await fetchTasks();
+
+            alert.success("A tarefa foi modificada com sucesso.");
+        } catch (error) {
+            alert.error("Algo deu errado.");
+        }
+    };
     return (
         <div className="task-item-container">
             <div className="task-description">
@@ -31,6 +47,7 @@ const TaskItem = ({ tarefa, fetchTasks }) => {
                     <input
                         type="checkbox"
                         defaultChecked={tarefa.isCompleted}
+                        onChange={(e) => handleTaskCompletionChange(e)}
                     />
                     <span
                         className={
