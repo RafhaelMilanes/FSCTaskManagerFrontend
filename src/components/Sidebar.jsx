@@ -1,6 +1,6 @@
-import { CustomButtom } from "./CustomButtom";
+import CustomButtom from "./CustomButtom";
 
-import "./Sidebat.scss";
+import "./Sidebar.scss";
 import logo from "../assets/images/logo.png";
 
 const Sidbar = () => {
