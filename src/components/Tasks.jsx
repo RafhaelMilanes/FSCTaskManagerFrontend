@@ -33,7 +33,10 @@ const Tasks = () => {
                         {tasks
                             .filter((task) => task.isCompleted === false)
                             .map((lastTask) => (
-                                <TaskItem tarefa={lastTask} />
+                                <TaskItem
+                                    tarefa={lastTask}
+                                    fetchTasks={fetchTasks}
+                                />
                             ))}
                     </div>
                 </div>
@@ -43,7 +46,10 @@ const Tasks = () => {
                         {tasks
                             .filter((task) => task.isCompleted === true)
                             .map((completedtask) => (
-                                <TaskItem tarefa={completedtask} />
+                                <TaskItem
+                                    tarefa={completedtask}
+                                    fetchTasks={fetchTasks}
+                                />
                             ))}
                     </div>
                 </div>

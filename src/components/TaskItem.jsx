@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAlert } from "react-alert";
 import "./TaskItem.scss";
 
-const TaskItem = ({ tarefa }) => {
+const TaskItem = ({ tarefa, fetchTasks }) => {
     const alert = useAlert();
 
     const handleDeleteTask = async () => {
@@ -11,6 +11,8 @@ const TaskItem = ({ tarefa }) => {
             await axios.delete(
                 `https://fsctaskmanagerbackend.onrender.com/tasks/${tarefa._id}`
             );
+            await fetchTasks();
+            alert.success("A tarefa foi removida com sucesso!");
         } catch (error) {
             alert.error("Algo deu errado.");
         }
