@@ -21,6 +21,14 @@ const AddTask = () => {
             if (task.length === 0) {
                 return alert.error("A tarefa precisa de uma descrição");
             }
+
+            await axios.post(
+                "https://fsctaskmanagerbackend.onrender.com/tasks",
+                {
+                    description: task,
+                    isCompleted: false,
+                }
+            );
         } catch (error) {}
     };
 
