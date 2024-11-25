@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import axios from "axios";
 import { useAlert } from "react-alert";
 
@@ -9,8 +9,9 @@ import AddTask from "./AddTask";
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([]);
-    const alert = useAlert;
-    const fetchTasks = async () => {
+    const alert = useAlert();
+
+    const fetchTasks = useCallback(async () => {
         try {
             const { data } = await axios.get(
                 "https://fsctaskmanagerbackend.onrender.com/tasks"
@@ -19,7 +20,7 @@ const Tasks = () => {
         } catch (error) {
             alert.error("Não foi possivel recuperar as tarefas");
         }
-    };
+    }, [alert]);
 
     const lastTasks = useMemo(() => {
         return tasks.filter((task) => task.isCompleted === false);
@@ -31,7 +32,7 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchTasks();
-    }, []);
+    }, [fetchTasks]);
     return (
         <>
             <div className="tasks-container">
