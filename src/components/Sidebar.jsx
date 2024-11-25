@@ -2,8 +2,14 @@ import CustomButtom from "./CustomButtom";
 
 import "./Sidebar.scss";
 import logo from "../assets/images/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const Sidbar = () => {
+    const navigate = useNavigate();
+
+    const handleSignup = () => {
+        navigate("/login");
+    };
     return (
         <div className="sidebar-container">
             <div className="logo">
@@ -11,7 +17,7 @@ const Sidbar = () => {
             </div>
 
             <div className="sign-out">
-                <CustomButtom>Sair</CustomButtom>
+                <CustomButtom onClick={handleSignup}>Sair</CustomButtom>
             </div>
         </div>
     );
