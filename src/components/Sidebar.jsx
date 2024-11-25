@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const Sidbar = () => {
     const navigate = useNavigate();
 
-    const handleSignup = () => {
+    const handleSignout = () => {
         navigate("/login");
     };
     return (
@@ -17,7 +17,7 @@ const Sidbar = () => {
             </div>
 
             <div className="sign-out">
-                <CustomButtom onClick={handleSignup}>Sair</CustomButtom>
+                <CustomButtom onClick={handleSignout}>Sair</CustomButtom>
             </div>
         </div>
     );
